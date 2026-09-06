@@ -34,16 +34,16 @@
     { name: "Roxo", hex: "#8B5CF6", img: "img/roxo-perfil.webp" },
     { name: "Azul", hex: "#5C9CE6", img: "img/azul-perfil.webp" },
     { name: "Preto", hex: "#101317", img: "img/preto-perfil.webp" },
-    { name: "Verde-água", hex: "#7FD9C4", img: "img/produto-verde.avif" },
-    { name: "Branco/Roxo", hex: "#B98BF0", img: "img/lifestyle-roxo-tornozelo.avif" },
-    { name: "Branco/Azul", hex: "#4C6FE0", img: "img/produto-branco-azul.avif" },
-    { name: "Preto Fosco", hex: "#2B2F33", img: "img/produto-preto-fosco.avif" },
-    { name: "Branco/Laranja", hex: "#FF8A3D", img: "img/produto-branco-laranja.avif" },
-    { name: "Turquesa", hex: "#3DD9C7", img: "img/produto-turquesa.avif" },
-    { name: "Coral", hex: "#FF6B5B", img: "img/produto-coral.avif" },
-    { name: "Bege/Verde", hex: "#B7C79A", img: "img/produto-bege-verde.avif" },
-    { name: "Branco", hex: "#DADFE6", img: "img/produto-branco.avif" },
-    { name: "Verde Neon", hex: "#7ED321", img: "img/lifestyle-verde-neon.avif" }
+    { name: "Verde-água", hex: "#7FD9C4", img: "img/verde-agua-perfil.webp" },
+    { name: "Branco/Roxo", hex: "#B98BF0", img: "img/branco-roxo-perfil.webp" },
+    { name: "Branco/Azul", hex: "#4C6FE0", img: "img/branco-azul-perfil.webp" },
+    { name: "Preto Fosco", hex: "#2B2F33", img: "img/preto-fosco-perfil.webp" },
+    { name: "Branco/Laranja", hex: "#FF8A3D", img: "img/branco-laranja-perfil.webp" },
+    { name: "Turquesa", hex: "#3DD9C7", img: "img/turquesa-perfil.webp" },
+    { name: "Coral", hex: "#FF6B5B", img: "img/coral-perfil.webp" },
+    { name: "Bege/Verde", hex: "#B7C79A", img: "img/bege-verde-perfil.webp" },
+    { name: "Branco", hex: "#DADFE6", img: "img/branco-perfil.webp" },
+    { name: "Verde Neon", hex: "#7ED321", img: "img/verde-neon-perfil.webp" }
   ];
   var SIZES = [33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43]; // confirmado com a SIHI: tamanho enviado ao fornecedor = BR + 2
 
