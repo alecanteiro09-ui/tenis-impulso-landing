@@ -31,9 +31,9 @@
 
   /* ---------- cores e tamanhos disponíveis (todas as variantes reais do AliExpress/SIHI) ---------- */
   var COLORS = [
-    { name: "Roxo", hex: "#8B5CF6", img: "img/lifestyle-pista.avif" },
-    { name: "Azul", hex: "#5C9CE6", img: "img/produto-azul.avif" },
-    { name: "Preto", hex: "#101317", img: "img/produto-preto.avif" },
+    { name: "Roxo", hex: "#8B5CF6", img: "img/roxo-perfil.webp" },
+    { name: "Azul", hex: "#5C9CE6", img: "img/azul-perfil.webp" },
+    { name: "Preto", hex: "#101317", img: "img/preto-perfil.webp" },
     { name: "Verde-água", hex: "#7FD9C4", img: "img/produto-verde.avif" },
     { name: "Branco/Roxo", hex: "#B98BF0", img: "img/lifestyle-roxo-tornozelo.avif" },
     { name: "Branco/Azul", hex: "#4C6FE0", img: "img/produto-branco-azul.avif" },
@@ -56,9 +56,9 @@
   }
 
   if (galleryThumbsEl) {
-    galleryThumbsEl.innerHTML = COLORS.map(function (c, i) {
+    galleryThumbsEl.insertAdjacentHTML("beforeend", COLORS.map(function (c, i) {
       return '<button class="thumb' + (i === 0 ? " active" : "") + '" data-img="' + c.img + '" data-color="' + c.name + '"><img src="' + c.img + '" alt="Impulso Carbon Pro ' + c.name + '" loading="lazy" decoding="async" width="56" height="56"></button>';
-    }).join("");
+    }).join(""));
 
     galleryThumbsEl.addEventListener("click", function (e) {
       var t = e.target.closest(".thumb");

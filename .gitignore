@@ -2,3 +2,6 @@
 Thumbs.db
 node_modules/
 .vercel
+
+# fotos brutas do shoot com IA (versoes .webp otimizadas ja estao em img/)
+img/shoot/
