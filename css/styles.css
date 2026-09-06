@@ -132,7 +132,7 @@ img{ max-width:100%; display:block; }
   display:flex; align-items:center; justify-content:center; box-shadow:0 0 0 4px rgba(30,107,230,.22); }
 .infographic-legend{ list-style:none; margin:0; padding:0; display:grid; gap:14px; }
 .infographic-legend li{ display:flex; gap:12px; align-items:flex-start; }
-.infographic-legend li b:first-child{ flex:0 0 auto; width:24px; height:24px; border-radius:50%; background:var(--brand); color:#fff;
+.infographic-legend li .ig-num{ flex:0 0 auto; width:24px; height:24px; border-radius:50%; background:var(--brand); color:#fff;
   font-size:12px; display:flex; align-items:center; justify-content:center; }
 .infographic-legend li div b{ display:block; font-size:14.5px; }
 .infographic-legend li div span{ display:block; color:var(--muted); font-size:12.5px; margin-top:2px; }
