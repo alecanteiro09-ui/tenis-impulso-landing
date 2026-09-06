@@ -327,10 +327,37 @@
       </div>
 
       <div class="size-guide-wrap">
-        <button type="button" class="size-guide-link" id="btn-size-guide">Como saber meu tamanho?</button>
-        <div id="size-guide" class="size-guide-note" hidden>
-          <img src="img/extra-escala-pe.webp" alt="Como medir o comprimento do pé com fita métrica" loading="lazy" decoding="async" width="200" height="200">
-          <p>⚠ A numeração deste fornecedor não é igual à numeração BR de tênis comum — o número exibido já está convertido, mas fica <strong>1 a 2 números menor</strong> que a etiqueta de uma marca nacional. Meça o comprimento do seu pé descalço (calcanhar até a ponta do dedão) e, na dúvida entre dois tamanhos, escolha o maior. <span class="flag-inline">[Confirmar tabela oficial de conversão com a SIHI antes de publicar]</span></p>
+        <button type="button" class="size-guide-link" id="btn-size-guide">📏 Como saber meu tamanho?</button>
+      </div>
+
+      <!-- POPUP GUIA DE TAMANHO -->
+      <div id="size-modal" class="modal-overlay" hidden>
+        <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="size-modal-title">
+          <button type="button" class="modal-close" id="size-modal-close" aria-label="Fechar">✕</button>
+          <h3 id="size-modal-title">Como saber o seu tamanho</h3>
+          <img src="img/extra-escala-pe.webp" alt="Como medir o comprimento do pé com fita métrica" loading="lazy" decoding="async" class="modal-img">
+          <p class="modal-text">Meça o comprimento do seu pé descalço, do calcanhar até a ponta do dedão, e compare com a régua abaixo. Na dúvida entre dois tamanhos, escolha o maior.</p>
+
+          <div class="tblwrap">
+            <table class="size-ruler">
+              <thead><tr><th>Tamanho BR</th><th>Comprimento do pé</th></tr></thead>
+              <tbody>
+                <tr><td>33</td><td>20,7 cm</td></tr>
+                <tr><td>34</td><td>21,3 cm</td></tr>
+                <tr><td>35</td><td>22,0 cm</td></tr>
+                <tr><td>36</td><td>22,7 cm</td></tr>
+                <tr><td>37</td><td>23,3 cm</td></tr>
+                <tr><td>38</td><td>24,0 cm</td></tr>
+                <tr><td>39</td><td>24,7 cm</td></tr>
+                <tr><td>40</td><td>25,3 cm</td></tr>
+                <tr><td>41</td><td>26,0 cm</td></tr>
+                <tr><td>42</td><td>26,7 cm</td></tr>
+                <tr><td>43</td><td>27,3 cm</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="modal-warning">⚠ A numeração deste fornecedor não é igual à numeração BR de tênis comum — o número exibido já está convertido, mas fica <strong>1 a 2 números menor</strong> que a etiqueta de uma marca nacional. <span class="flag-inline">[Confirmar tabela oficial de medidas e conversão com a SIHI antes de publicar]</span></p>
         </div>
       </div>
 

@@ -175,12 +175,22 @@
   }
 
   var sizeGuideBtn = document.getElementById("btn-size-guide");
-  var sizeGuideNote = document.getElementById("size-guide");
-  if (sizeGuideBtn && sizeGuideNote) {
-    sizeGuideBtn.addEventListener("click", function () {
-      sizeGuideNote.hidden = !sizeGuideNote.hidden;
+  var sizeModal = document.getElementById("size-modal");
+  var sizeModalClose = document.getElementById("size-modal-close");
+
+  function openSizeModal() { if (sizeModal) sizeModal.hidden = false; }
+  function closeSizeModal() { if (sizeModal) sizeModal.hidden = true; }
+
+  if (sizeGuideBtn) sizeGuideBtn.addEventListener("click", openSizeModal);
+  if (sizeModalClose) sizeModalClose.addEventListener("click", closeSizeModal);
+  if (sizeModal) {
+    sizeModal.addEventListener("click", function (e) {
+      if (e.target === sizeModal) closeSizeModal();
     });
   }
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && sizeModal && !sizeModal.hidden) closeSizeModal();
+  });
 
   /* ---------- mobile sticky CTA ---------- */
   var mobileCta = document.querySelector(".mobile-cta");
