@@ -118,6 +118,22 @@ img{ max-width:100%; display:block; }
 .pains li b{ display:block; font-size:15.5px; margin-bottom:3px; }
 .pains li span{ color:var(--muted); font-size:13.5px; }
 
+/* ---------- infografico do produto ---------- */
+.infographic{ display:grid; grid-template-columns:minmax(200px,340px) 1fr; gap:28px; align-items:center;
+  max-width:760px; margin:30px auto 36px; }
+@media (max-width:560px){ .infographic{ grid-template-columns:1fr; } }
+.infographic-img{ position:relative; border-radius:16px; overflow:hidden; border:1px solid var(--line); background:var(--surface); box-shadow:var(--shadow); }
+.infographic-img img{ width:100%; height:auto; display:block; aspect-ratio:1/1; object-fit:cover; }
+.ig-dot{ position:absolute; left:var(--x); top:var(--y); transform:translate(-50%,-50%);
+  width:26px; height:26px; border-radius:50%; background:var(--brand); color:#fff; font-family:'Plus Jakarta Sans'; font-weight:800; font-size:13px;
+  display:flex; align-items:center; justify-content:center; box-shadow:0 0 0 4px rgba(30,107,230,.22); }
+.infographic-legend{ list-style:none; margin:0; padding:0; display:grid; gap:14px; }
+.infographic-legend li{ display:flex; gap:12px; align-items:flex-start; }
+.infographic-legend li b:first-child{ flex:0 0 auto; width:24px; height:24px; border-radius:50%; background:var(--brand); color:#fff;
+  font-size:12px; display:flex; align-items:center; justify-content:center; }
+.infographic-legend li div b{ display:block; font-size:14.5px; }
+.infographic-legend li div span{ display:block; color:var(--muted); font-size:12.5px; margin-top:2px; }
+
 /* ---------- benefits ---------- */
 .benefits{ margin-top:30px; display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; }
 .benefit{ background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:22px 20px; box-shadow:var(--shadow); }
@@ -128,7 +144,7 @@ img{ max-width:100%; display:block; }
 /* ---------- uso / cenários ---------- */
 .uso-grid{ margin-top:26px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
 .uso-item{ margin:0; background:var(--surface); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
-.uso-item img{ width:100%; aspect-ratio:1/1; object-fit:cover; }
+.uso-item img{ width:100%; height:auto; aspect-ratio:1/1; object-fit:cover; }
 .uso-item figcaption{ padding:14px 16px; font-size:14px; font-weight:600; }
 
 /* ---------- rating summary ---------- */
