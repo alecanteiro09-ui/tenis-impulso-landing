@@ -123,6 +123,22 @@ img{ max-width:100%; display:block; }
 .benefit h3{ font-family:'Manrope'; text-transform:none; font-weight:800; font-size:15.5px; margin:14px 0 6px; }
 .benefit p{ color:var(--muted); font-size:13.5px; margin:0; }
 
+/* ---------- uso / cenários ---------- */
+.uso-grid{ margin-top:26px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+.uso-item{ background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:16px 18px; font-size:14.5px; font-weight:600; }
+
+/* ---------- rating summary ---------- */
+.rating-summary{ display:flex; gap:36px; flex-wrap:wrap; align-items:center; margin:22px 0 30px; padding:20px 22px;
+  background:var(--surface-2); border-radius:10px; }
+.rating-big{ text-align:center; flex:0 0 auto; }
+.rating-big b{ display:block; font-family:'Anton'; font-size:40px; line-height:1; }
+.rating-big span{ display:block; font-family:'JetBrains Mono'; font-size:10.5px; color:var(--muted); margin-top:6px; }
+.rating-bars{ flex:1 1 260px; display:grid; gap:6px; min-width:220px; }
+.rbar{ display:grid; grid-template-columns:28px 1fr 36px; align-items:center; gap:10px; font-family:'JetBrains Mono'; font-size:11px; color:var(--muted); }
+.rbar i{ display:block; height:7px; border-radius:4px; background:var(--line); position:relative; overflow:hidden; }
+.rbar i::before{ content:""; position:absolute; inset:0; width:var(--w); background:var(--ember); border-radius:4px; }
+.rbar b{ text-align:right; color:var(--ink); font-weight:600; }
+
 /* ---------- testimonials ---------- */
 .testi-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-top:8px; }
 .testi{ background:var(--surface-2); border-radius:8px; padding:18px; }
