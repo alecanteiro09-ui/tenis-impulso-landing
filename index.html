@@ -269,44 +269,20 @@
         </button>
       </div>
 
-      <div class="color-picker">
-        <span class="cp-label">Escolha a cor</span>
-        <div class="swatches">
-          <button class="swatch active" style="--c:#8B5CF6" data-color="Roxo" data-img="img/lifestyle-pista.avif" aria-label="Roxo"></button>
-          <button class="swatch" style="--c:#5C9CE6" data-color="Azul" data-img="img/produto-azul.avif" aria-label="Azul"></button>
-          <button class="swatch" style="--c:#101317" data-color="Preto" data-img="img/produto-preto.avif" aria-label="Preto"></button>
-          <button class="swatch" style="--c:#7FD9C4" data-color="Verde-água" data-img="img/produto-verde.avif" aria-label="Verde-água"></button>
-        </div>
+      <p class="pair-instructions">Escolha a cor e o tamanho <b>de cada par</b> do seu kit:</p>
+      <div class="pair-selectors" id="pair-selectors">
+        <!-- gerado via JS conforme a quantidade escolhida acima -->
       </div>
 
-      <div class="size-picker">
-        <div class="sp-head">
-          <span class="cp-label">Escolha o tamanho (BR)</span>
-          <button type="button" class="size-guide-link" id="btn-size-guide">Como saber meu tamanho?</button>
-        </div>
-        <div class="sizes" role="radiogroup" aria-label="Tamanho">
-          <button class="size" data-size="33" data-factory="35">33</button>
-          <button class="size" data-size="34" data-factory="36">34</button>
-          <button class="size active" data-size="35" data-factory="37">35</button>
-          <button class="size" data-size="36" data-factory="38">36</button>
-          <button class="size" data-size="37" data-factory="39">37</button>
-          <button class="size" data-size="38" data-factory="40">38</button>
-          <button class="size" data-size="39" data-factory="41">39</button>
-          <button class="size" data-size="40" data-factory="42">40</button>
-          <button class="size" data-size="41" data-factory="43">41</button>
-          <button class="size" data-size="42" data-factory="44">42</button>
-          <button class="size" data-size="43" data-factory="45">43</button>
-        </div>
+      <div class="size-guide-wrap">
+        <button type="button" class="size-guide-link" id="btn-size-guide">Como saber meu tamanho?</button>
         <p id="size-guide" class="size-guide-note" hidden>
-          ⚠ A numeração deste fornecedor não é igual à numeração BR de tênis comum — o número exibido acima já está convertido, mas fica <strong>1 a 2 números menor</strong> que a etiqueta de uma marca nacional. Meça o comprimento do seu pé descalço (calcanhar até a ponta do dedão) e, na dúvida entre dois tamanhos, escolha o maior. <span class="flag-inline">[Confirmar tabela oficial de conversão com a SIHI antes de publicar]</span>
+          ⚠ A numeração deste fornecedor não é igual à numeração BR de tênis comum — o número exibido já está convertido, mas fica <strong>1 a 2 números menor</strong> que a etiqueta de uma marca nacional. Meça o comprimento do seu pé descalço (calcanhar até a ponta do dedão) e, na dúvida entre dois tamanhos, escolha o maior. <span class="flag-inline">[Confirmar tabela oficial de conversão com a SIHI antes de publicar]</span>
         </p>
       </div>
 
-      <ul class="stack">
-        <li><span>Impulso Carbon Pro (<span id="sel-qty">1</span> par) — <span id="sel-color">Branco</span> — Tam. <span id="sel-size">35</span></span><b id="sel-unit-total">R$ 219,90</b></li>
-        <li><span>Frete expresso</span><b>Grátis</b></li>
-        <li><span>Bônus: par de meias esportivas</span><b>Grátis</b></li>
-        <li class="total"><span>Total hoje</span><b id="sel-total">R$ 219,90</b></li>
+      <ul class="stack" id="stack-list">
+        <!-- linhas de cada par + frete + bônus + total, geradas via JS -->
       </ul>
       <p class="price-terms center">à vista no Pix · ou <b id="sel-parcel">5x de R$ 43,98</b> sem juros no cartão</p>
 

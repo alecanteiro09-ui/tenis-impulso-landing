@@ -29,39 +29,6 @@
   tickCountdown();
   setInterval(tickCountdown, 1000);
 
-  /* ---------- kit selector ---------- */
-  var kitButtons = document.querySelectorAll(".kit");
-  var selQty = document.getElementById("sel-qty");
-  var selUnitTotal = document.getElementById("sel-unit-total");
-  var selTotal = document.getElementById("sel-total");
-  var selParcel = document.getElementById("sel-parcel");
-  var PARCELAS = 5;
-
-  function formatBRL(value) {
-    return "R$ " + value.toFixed(2).replace(".", ",");
-  }
-
-  function selectKit(btn) {
-    kitButtons.forEach(function (b) { b.classList.remove("active"); });
-    btn.classList.add("active");
-
-    var qty = btn.getAttribute("data-qty");
-    var unit = parseFloat(btn.getAttribute("data-unit"));
-    var total = parseFloat(btn.getAttribute("data-total"));
-
-    if (selQty) selQty.textContent = qty;
-    if (selUnitTotal) selUnitTotal.textContent = formatBRL(unit * parseInt(qty, 10));
-    if (selTotal) selTotal.textContent = formatBRL(total);
-    if (selParcel) selParcel.textContent = PARCELAS + "x de " + formatBRL(total / PARCELAS);
-  }
-
-  kitButtons.forEach(function (btn) {
-    btn.addEventListener("click", function () { selectKit(btn); });
-  });
-
-  var featured = document.querySelector(".kit.featured");
-  if (featured) selectKit(featured);
-
   /* ---------- galeria de fotos ---------- */
   var thumbs = document.querySelectorAll(".thumb");
   var mainImg = document.getElementById("gallery-main-img");
@@ -75,44 +42,117 @@
       thumbs.forEach(function (x) { x.classList.remove("active"); });
       t.classList.add("active");
       setGalleryImage(t.getAttribute("data-img"));
-      selectColorByName(t.getAttribute("data-color"));
     });
   });
 
-  /* ---------- color swatches ---------- */
-  var swatches = document.querySelectorAll(".swatch");
-  var selColor = document.getElementById("sel-color");
+  /* ---------- cores e tamanhos disponíveis ---------- */
+  var COLORS = [
+    { name: "Roxo", hex: "#8B5CF6", img: "img/lifestyle-pista.avif" },
+    { name: "Azul", hex: "#5C9CE6", img: "img/produto-azul.avif" },
+    { name: "Preto", hex: "#101317", img: "img/produto-preto.avif" },
+    { name: "Verde-água", hex: "#7FD9C4", img: "img/produto-verde.avif" }
+  ];
+  var SIZES = [33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43]; // tamanho real do fornecedor (SIHI) = BR + 2
 
-  function selectColorByName(name) {
-    if (!name) return;
-    swatches.forEach(function (s) {
-      s.classList.toggle("active", s.getAttribute("data-color") === name);
-    });
-    if (selColor) selColor.textContent = name;
+  function formatBRL(value) {
+    return "R$ " + value.toFixed(2).replace(".", ",");
   }
 
-  swatches.forEach(function (sw) {
-    sw.addEventListener("click", function () {
-      swatches.forEach(function (s) { s.classList.remove("active"); });
-      sw.classList.add("active");
-      if (selColor) selColor.textContent = sw.getAttribute("data-color");
-      var img = sw.getAttribute("data-img");
-      if (img) setGalleryImage(img);
-    });
+  /* ---------- kit + seleção por par ---------- */
+  var kitButtons = document.querySelectorAll(".kit");
+  var pairSelectorsEl = document.getElementById("pair-selectors");
+  var stackListEl = document.getElementById("stack-list");
+  var selParcel = document.getElementById("sel-parcel");
+  var PARCELAS = 5;
+
+  var currentKit = { qty: 1, unit: 219.90, total: 219.90 };
+  var pairs = [{ color: COLORS[0].name, size: 35 }];
+
+  function syncPairsLength() {
+    var qty = currentKit.qty;
+    while (pairs.length < qty) pairs.push({ color: COLORS[0].name, size: 35 });
+    if (pairs.length > qty) pairs = pairs.slice(0, qty);
+  }
+
+  function renderPairSelectors() {
+    var showLabel = pairs.length > 1;
+    var html = pairs.map(function (pair, i) {
+      var swatches = COLORS.map(function (c) {
+        var active = c.name === pair.color ? " active" : "";
+        return '<button class="swatch' + active + '" style="--c:' + c.hex + '" data-role="color" data-value="' + c.name + '" data-img="' + c.img + '" aria-label="' + c.name + '"></button>';
+      }).join("");
+      var sizes = SIZES.map(function (s) {
+        var active = s === pair.size ? " active" : "";
+        return '<button class="size-mini' + active + '" data-role="size" data-value="' + s + '">' + s + '</button>';
+      }).join("");
+      return (
+        '<div class="pair-card" data-pair="' + i + '">' +
+          (showLabel ? '<div class="pair-head">Par ' + (i + 1) + '</div>' : '') +
+          '<div class="pair-row"><span class="cp-label">Cor</span><div class="swatches">' + swatches + '</div></div>' +
+          '<div class="pair-row"><span class="cp-label">Tamanho (BR)</span><div class="sizes-mini">' + sizes + '</div></div>' +
+        '</div>'
+      );
+    }).join("");
+    if (pairSelectorsEl) pairSelectorsEl.innerHTML = html;
+  }
+
+  function renderStack() {
+    if (!stackListEl) return;
+    var lines = pairs.map(function (pair, i) {
+      var label = "Impulso Carbon Pro" + (pairs.length > 1 ? " — Par " + (i + 1) : "") + " — " + pair.color + " — Tam. " + pair.size;
+      return "<li><span>" + label + "</span><b>" + formatBRL(currentKit.unit) + "</b></li>";
+    }).join("");
+    lines += "<li><span>Frete expresso</span><b>Grátis</b></li>";
+    lines += "<li><span>Bônus: par de meias esportivas</span><b>Grátis</b></li>";
+    lines += '<li class="total"><span>Total hoje</span><b>' + formatBRL(currentKit.total) + "</b></li>";
+    stackListEl.innerHTML = lines;
+    if (selParcel) selParcel.textContent = PARCELAS + "x de " + formatBRL(currentKit.total / PARCELAS);
+  }
+
+  function refreshOffer() {
+    syncPairsLength();
+    renderPairSelectors();
+    renderStack();
+  }
+
+  function selectKit(btn) {
+    kitButtons.forEach(function (b) { b.classList.remove("active"); });
+    btn.classList.add("active");
+    currentKit = {
+      qty: parseInt(btn.getAttribute("data-qty"), 10),
+      unit: parseFloat(btn.getAttribute("data-unit")),
+      total: parseFloat(btn.getAttribute("data-total"))
+    };
+    refreshOffer();
+  }
+
+  kitButtons.forEach(function (btn) {
+    btn.addEventListener("click", function () { selectKit(btn); });
   });
 
-  /* ---------- size picker ---------- */
-  var sizes = document.querySelectorAll(".size");
-  var selSize = document.getElementById("sel-size");
-
-  sizes.forEach(function (sz) {
-    sz.addEventListener("click", function () {
-      sizes.forEach(function (s) { s.classList.remove("active"); });
-      sz.classList.add("active");
-      if (selSize) selSize.textContent = sz.getAttribute("data-size");
-      // data-factory guarda o tamanho real do fornecedor (SIHI) pra mandar no pedido depois
+  if (pairSelectorsEl) {
+    pairSelectorsEl.addEventListener("click", function (e) {
+      var el = e.target.closest("[data-role]");
+      if (!el) return;
+      var card = e.target.closest(".pair-card");
+      var idx = parseInt(card.getAttribute("data-pair"), 10);
+      if (el.getAttribute("data-role") === "color") {
+        pairs[idx].color = el.getAttribute("data-value");
+        setGalleryImage(el.getAttribute("data-img"));
+      } else if (el.getAttribute("data-role") === "size") {
+        pairs[idx].size = parseInt(el.getAttribute("data-value"), 10);
+      }
+      renderPairSelectors();
+      renderStack();
     });
-  });
+  }
+
+  var featured = document.querySelector(".kit.featured");
+  if (featured) {
+    selectKit(featured);
+  } else {
+    refreshOffer();
+  }
 
   var sizeGuideBtn = document.getElementById("btn-size-guide");
   var sizeGuideNote = document.getElementById("size-guide");
