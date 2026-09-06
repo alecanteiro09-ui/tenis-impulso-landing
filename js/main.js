@@ -57,7 +57,7 @@
 
   if (galleryThumbsEl) {
     galleryThumbsEl.innerHTML = COLORS.map(function (c, i) {
-      return '<button class="thumb' + (i === 0 ? " active" : "") + '" data-img="' + c.img + '" data-color="' + c.name + '"><img src="' + c.img + '" alt="Impulso Carbon Pro ' + c.name + '"></button>';
+      return '<button class="thumb' + (i === 0 ? " active" : "") + '" data-img="' + c.img + '" data-color="' + c.name + '"><img src="' + c.img + '" alt="Impulso Carbon Pro ' + c.name + '" loading="lazy" decoding="async" width="56" height="56"></button>';
     }).join("");
 
     galleryThumbsEl.addEventListener("click", function (e) {
