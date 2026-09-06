@@ -29,30 +29,45 @@
   tickCountdown();
   setInterval(tickCountdown, 1000);
 
+  /* ---------- cores e tamanhos disponíveis (todas as variantes reais do AliExpress/SIHI) ---------- */
+  var COLORS = [
+    { name: "Roxo", hex: "#8B5CF6", img: "img/lifestyle-pista.avif" },
+    { name: "Azul", hex: "#5C9CE6", img: "img/produto-azul.avif" },
+    { name: "Preto", hex: "#101317", img: "img/produto-preto.avif" },
+    { name: "Verde-água", hex: "#7FD9C4", img: "img/produto-verde.avif" },
+    { name: "Branco/Roxo", hex: "#B98BF0", img: "img/lifestyle-roxo-tornozelo.avif" },
+    { name: "Branco/Azul", hex: "#4C6FE0", img: "img/produto-branco-azul.avif" },
+    { name: "Preto Fosco", hex: "#2B2F33", img: "img/produto-preto-fosco.avif" },
+    { name: "Branco/Laranja", hex: "#FF8A3D", img: "img/produto-branco-laranja.avif" },
+    { name: "Turquesa", hex: "#3DD9C7", img: "img/produto-turquesa.avif" },
+    { name: "Coral", hex: "#FF6B5B", img: "img/produto-coral.avif" },
+    { name: "Bege/Verde", hex: "#B7C79A", img: "img/produto-bege-verde.avif" },
+    { name: "Branco", hex: "#DADFE6", img: "img/produto-branco.avif" },
+    { name: "Verde Neon", hex: "#7ED321", img: "img/lifestyle-verde-neon.avif" }
+  ];
+  var SIZES = [33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43]; // tamanho real do fornecedor (SIHI) = BR + 2
+
   /* ---------- galeria de fotos ---------- */
-  var thumbs = document.querySelectorAll(".thumb");
   var mainImg = document.getElementById("gallery-main-img");
+  var galleryThumbsEl = document.getElementById("gallery-thumbs");
 
   function setGalleryImage(src) {
     if (mainImg && src) mainImg.src = src;
   }
 
-  thumbs.forEach(function (t) {
-    t.addEventListener("click", function () {
-      thumbs.forEach(function (x) { x.classList.remove("active"); });
+  if (galleryThumbsEl) {
+    galleryThumbsEl.innerHTML = COLORS.map(function (c, i) {
+      return '<button class="thumb' + (i === 0 ? " active" : "") + '" data-img="' + c.img + '" data-color="' + c.name + '"><img src="' + c.img + '" alt="Impulso Carbon Pro ' + c.name + '"></button>';
+    }).join("");
+
+    galleryThumbsEl.addEventListener("click", function (e) {
+      var t = e.target.closest(".thumb");
+      if (!t) return;
+      galleryThumbsEl.querySelectorAll(".thumb").forEach(function (x) { x.classList.remove("active"); });
       t.classList.add("active");
       setGalleryImage(t.getAttribute("data-img"));
     });
-  });
-
-  /* ---------- cores e tamanhos disponíveis ---------- */
-  var COLORS = [
-    { name: "Roxo", hex: "#8B5CF6", img: "img/lifestyle-pista.avif" },
-    { name: "Azul", hex: "#5C9CE6", img: "img/produto-azul.avif" },
-    { name: "Preto", hex: "#101317", img: "img/produto-preto.avif" },
-    { name: "Verde-água", hex: "#7FD9C4", img: "img/produto-verde.avif" }
-  ];
-  var SIZES = [33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43]; // tamanho real do fornecedor (SIHI) = BR + 2
+  }
 
   function formatBRL(value) {
     return "R$ " + value.toFixed(2).replace(".", ",");
