@@ -100,9 +100,14 @@
         var active = s === pair.size ? " active" : "";
         return '<button class="size-mini' + active + '" data-role="size" data-value="' + s + '">' + s + '</button>';
       }).join("");
+      var selectedColorObj = COLORS.find(function (c) { return c.name === pair.color; }) || COLORS[0];
       return (
         '<div class="pair-card" data-pair="' + i + '">' +
           (showLabel ? '<div class="pair-head">Par ' + (i + 1) + '</div>' : '') +
+          '<div class="pair-preview">' +
+            '<img src="' + selectedColorObj.img + '" alt="Impulso Carbon Pro na cor ' + selectedColorObj.name + '">' +
+            '<span class="pair-preview-label">' + selectedColorObj.name + '</span>' +
+          '</div>' +
           '<div class="pair-row"><span class="cp-label">Cor</span><div class="swatches">' + swatches + '</div></div>' +
           '<div class="pair-row"><span class="cp-label">Tamanho (BR)</span><div class="sizes-mini">' + sizes + '</div></div>' +
         '</div>'
