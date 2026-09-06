@@ -45,7 +45,7 @@
     { name: "Branco", hex: "#DADFE6", img: "img/produto-branco.avif" },
     { name: "Verde Neon", hex: "#7ED321", img: "img/lifestyle-verde-neon.avif" }
   ];
-  var SIZES = [33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43]; // tamanho real do fornecedor (SIHI) = BR + 2
+  var SIZES = [33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43]; // confirmado com a SIHI: tamanho enviado ao fornecedor = BR + 2
 
   /* ---------- galeria de fotos ---------- */
   var mainImg = document.getElementById("gallery-main-img");

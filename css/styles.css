@@ -225,7 +225,9 @@ table.cmp tr td:first-child{ color:var(--muted); }
   text-decoration:underline; cursor:pointer; }
 /* ---------- popup guia de tamanho ---------- */
 .modal-overlay{ position:fixed; inset:0; background:rgba(16,20,23,.55); z-index:100;
-  display:flex; align-items:center; justify-content:center; padding:20px; }
+  align-items:center; justify-content:center; padding:20px; }
+.modal-overlay[hidden]{ display:none; }
+.modal-overlay:not([hidden]){ display:flex; }
 .modal-box{ position:relative; background:var(--surface); border-radius:16px; padding:26px 22px 22px;
   max-width:420px; width:100%; max-height:88vh; overflow-y:auto; }
 .modal-close{ position:absolute; top:12px; right:12px; width:32px; height:32px; border-radius:50%;
