@@ -56,7 +56,10 @@ img{ max-width:100%; display:block; }
 /* ---------- hero ---------- */
 .hero{ padding:44px 0 36px; }
 .hero-grid{ display:grid; grid-template-columns:1.05fr 1fr; gap:44px; align-items:center; }
-@media (max-width:840px){ .hero-grid{ grid-template-columns:1fr; } }
+@media (max-width:840px){
+  .hero-grid{ grid-template-columns:1fr; }
+  .hero-media{ order:-1; margin-bottom:8px; }
+}
 .trust-row{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:16px; }
 .hero-copy .tag{ display:inline-flex; align-items:center; background:var(--brand-soft); color:var(--brand-dark); font-size:12px; font-weight:700;
   letter-spacing:.02em; padding:7px 13px; border-radius:999px; margin:0; }
