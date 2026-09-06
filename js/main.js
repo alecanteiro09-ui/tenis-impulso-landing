@@ -62,15 +62,42 @@
   var featured = document.querySelector(".kit.featured");
   if (featured) selectKit(featured);
 
+  /* ---------- galeria de fotos ---------- */
+  var thumbs = document.querySelectorAll(".thumb");
+  var mainImg = document.getElementById("gallery-main-img");
+
+  function setGalleryImage(src) {
+    if (mainImg && src) mainImg.src = src;
+  }
+
+  thumbs.forEach(function (t) {
+    t.addEventListener("click", function () {
+      thumbs.forEach(function (x) { x.classList.remove("active"); });
+      t.classList.add("active");
+      setGalleryImage(t.getAttribute("data-img"));
+      selectColorByName(t.getAttribute("data-color"));
+    });
+  });
+
   /* ---------- color swatches ---------- */
   var swatches = document.querySelectorAll(".swatch");
   var selColor = document.getElementById("sel-color");
+
+  function selectColorByName(name) {
+    if (!name) return;
+    swatches.forEach(function (s) {
+      s.classList.toggle("active", s.getAttribute("data-color") === name);
+    });
+    if (selColor) selColor.textContent = name;
+  }
 
   swatches.forEach(function (sw) {
     sw.addEventListener("click", function () {
       swatches.forEach(function (s) { s.classList.remove("active"); });
       sw.classList.add("active");
       if (selColor) selColor.textContent = sw.getAttribute("data-color");
+      var img = sw.getAttribute("data-img");
+      if (img) setGalleryImage(img);
     });
   });
 
